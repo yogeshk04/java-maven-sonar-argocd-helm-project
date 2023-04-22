@@ -18,14 +18,27 @@ Prerequisites:
 Steps:
 
     1. Install the necessary Jenkins plugins:
-       1.1 Git plugin
-       1.2 Maven Integration plugin
-       1.3 Pipeline plugin
-       1.4 Kubernetes Continuous Deploy plugin
+       1.1 Git plugin Version5.0.0
+       1.2 Docker Pipeline
+       1.3 Pipeline Maven Integration Plugin
+       1.4 Pipeline: GitHub Groovy Libraries
+       1.5 Pipeline plugin
+       1.6 Kubernetes Continuous Deploy plugin
+       1.7 SonarQube Scanner for Jenkins
+       1.8 Sonar GerritVersion
+       1.9 SonarQube Generic Coverage
+       
+    2. Jenkins shared libray: repo [link](https://github.com/yogeshk04/jenkins-shared-lib)
+       2.1 Configure system
+       2.2 Add Global Pipeline Libraries
 
-    2. Create a new Jenkins pipeline:
-       2.1 In Jenkins, create a new pipeline job and configure it with the Git repository URL for the Java application.
-       2.2 Add a Jenkinsfile to the Git repository to define the pipeline stages.
+    3. Run doker container to configure sonar server
+       3.1 docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+       3.2 Login to sonarqube server and generate token - squ_72a03b879c6d2b381428335639ce5314c8440431 
+
+    4. Create a new Jenkins pipeline:
+       4.1 In Jenkins, create a new pipeline job and configure it with the Git repository URL for the Java application.
+       4.2 Add a Jenkinsfile to the Git repository to define the pipeline stages.
 
     3. Define the pipeline stages:
         Stage 1: Checkout the source code from Git.
