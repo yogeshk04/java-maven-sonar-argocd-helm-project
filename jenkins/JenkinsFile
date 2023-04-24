@@ -1,5 +1,8 @@
 @Library('jenkins-shared-lib') _
 pipeline {
+  environment {
+    PATH = "/Library/apache-maven-3.8.8/bin:/Applications/Docker.app/Contents/Resources/bin:${env.PATH}"
+  }
   agent {
     docker {
       image 'yogeshk04/docker-maven-agent:latest'
