@@ -16,6 +16,10 @@ spec:
     spec:
       containers:
       - name: spring-boot-app
-        image: yogeshk05/ultimate-cicd:replaceImageTag
+        image: yogeshk04/springboot-cicd:replaceImageTag
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 8080
