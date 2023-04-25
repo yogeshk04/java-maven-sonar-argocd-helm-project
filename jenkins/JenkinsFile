@@ -67,14 +67,21 @@ pipeline {
     }
 
     // Sixth Stage
-    stage('6 - Docker image push') {
+    stage('6 - Docker Login') {
+      steps {
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      }
+    }
+
+    // Seventh Stage
+    stage('7 - Docker image push') {
       steps {
         sh 'docker push ${DOCKER_IMAGE}'
       }
     }
 
-    // Seventh Stage
-    stage('7 - Docker image clean') {      
+    // Eighth Stage
+    stage('8 - Docker image clean') {      
       steps {
         script {
           sh 'docker rmi ${DOCKER_IMAGE}'            
@@ -82,8 +89,8 @@ pipeline {
       }
     }
 
-    // Eighth Stage
-    stage('8 - Update Deployment File') {
+    // Ninth Stage
+    stage('9 - Update Deployment File') {
       steps {
         withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
           sh '''
