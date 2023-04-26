@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: spring-boot-app
-        image: yogeshk04/springboot-cicd:10
+        image: yogeshk04/springboot-cicd:48
         resources:
           limits:
             memory: "128Mi"
