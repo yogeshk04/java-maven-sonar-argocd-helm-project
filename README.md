@@ -61,11 +61,20 @@ Steps:
         Stage 8: Use Argo CD to promote the application to a production environment.
 
     5. Set up Argo CD:
-        Install Argo CD on the Kubernetes cluster using operator
-        [link](https://operatorhub.io/operator/argocd-operator)
-        Set up a Git repository for Argo CD to track the changes in the Helm charts and Kubernetes manifests.
-        Create a Helm chart for the Java application that includes the Kubernetes manifests and Helm values.
-        Add the Helm chart to the Git repository that Argo CD is tracking.
+        Stage 1: Install Argo CD on the Kubernetes cluster using operator [link](https://operatorhub.io/operator/argocd-operator)
+        Stage 2: Got to https://argocd-operator.readthedocs.io/en/latest/usage/basics/
+        Stage 3: Copy the code and create a manifest file to a new Argo CD cluster with the default configuration. 'Ref: k8s-manifests/argocd-basic.yaml'
+        Stage 4: After this if you are using minikube user following command to port forward
+            -> minikube service list 
+         Or
+            -> kubectl port-forward svc/example-argocd-server 8085:80        
+        Stage 5: Open argocd using url: https://localhost:8085/
+        Stage 6: Default username is admin
+        Stage 7: For password use
+            -> kubectl edit secret example-argocd-cluster and copy admin.password: cGtPUHExYWdMbzRYNnhZQlI5bnd1ajVmdHZabFRRS3I=
+            -> echo -n 'cGtPUHExYWdMbzRYNnhZQlI5bnd1ajVmdHZabFRRS3I=' | base64 -d
+      Node: Do not copy the last % symbol in password string
+        Stage 8: Now copy the decrepted password and sign-in to Argo CD
 
     6. Configure Jenkins pipeline to integrate with Argo CD:
        6.1 Add the Argo CD API token to Jenkins credentials.
