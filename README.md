@@ -30,7 +30,7 @@ Steps:
        
     2. Jenkins shared libray: repo [link](https://github.com/yogeshk04/jenkins-shared-lib)
        2.1 Configure system
-       2.2 Add Global Pipeline Libraries
+       2.2 Search for "Global Pipeline Libraries" option and add your library repo url
 
     3. Run doker container to configure sonar server
        3.1 docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
