@@ -15,6 +15,9 @@ Prerequisites:
    -  Helm package manager
    -  Argo CD
 
+### Architecture diagram
+![Screenshot](./doc/ci-cd-workflow.png)
+
 Steps:
 
     1. Install the necessary Jenkins plugins:
